@@ -31,7 +31,7 @@ public class ContainerWithMostWater {
     return maxArea;
   }
 
-  //Brute Force
+  //Two Pointer Approach
   public static int maxArea1(int[] height) {
     int maxArea = 0, l = 0, r = height.length - 1;
     while (l < r) {
@@ -42,7 +42,6 @@ public class ContainerWithMostWater {
     return maxArea;
   }
 
-  //Two Pointer Approach
   public static void main(String[] args) {
     List<int[]> inputList = Arrays.asList(
         new int[] {1,8,6,2,5,4,8,3,7},
