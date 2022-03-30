@@ -16,8 +16,7 @@ import java.util.stream.IntStream;
  https://leetcode.com/problems/permutations/
  */
 public class Permutations {
-
-
+  
   public static List<List<Integer>> permute(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
     result.add(new ArrayList());
