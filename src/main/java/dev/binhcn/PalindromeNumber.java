@@ -26,8 +26,4 @@ public class PalindromeNumber {
       System.out.println(isPalindrome(number));
     }
   }
-
-  public static boolean isPalindrome1(int x) {
-    return true;
-  }
 }

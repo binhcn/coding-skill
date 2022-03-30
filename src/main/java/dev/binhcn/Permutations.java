@@ -68,8 +68,4 @@ public class Permutations {
       System.out.println(permute1(nums));
     }
   }
-
-  public static List<List<Integer>> permute0(Integer[] nums) {
-    return null;
-  }
 }
