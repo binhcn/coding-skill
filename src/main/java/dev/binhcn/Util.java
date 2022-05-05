@@ -1,5 +1,8 @@
 package dev.binhcn;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Util {
 
   public static void printArr(int[] nums) {
@@ -20,12 +23,12 @@ public class Util {
     int x = arr[endIdx];
     int i = startIdx;
     for (int j = startIdx; j < endIdx; j++) {
-      if (arr[j] <= x) {
-        Util.swap(arr, i, j);
+      if (arr[j] < x) {
+        swap(arr, i, j);
         i++;
       }
     }
-    Util.swap(arr, i, endIdx);
+    swap(arr, i, endIdx);
     return i;
   }
 
@@ -38,8 +41,15 @@ public class Util {
   }
 
   public static void main(String[] args) {
-    int[] nums = {3,3,3,5};
-    quickSort(nums, 0, nums.length - 1);
-    printArr(nums);
+    List<int[]> inputList = Arrays.asList(
+        new int[] {1,8,6,2,5,4,8,3,7},
+        new int[] {1,2,3,4,5},
+        new int[] {3,3,7,3,5},
+        new int[] {5,4,3,2,1}
+    );
+    for (int[] nums : inputList) {
+      quickSort(nums, 0, nums.length - 1);
+      printArr(nums);
+    }
   }
 }
