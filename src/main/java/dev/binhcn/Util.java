@@ -19,24 +19,23 @@ public class Util {
     return a;
   }
 
-  public static int partition(int arr[], int startIdx, int endIdx) {
-    int x = arr[endIdx];
-    int i = startIdx;
-    for (int j = startIdx; j < endIdx; j++) {
-      if (arr[j] < x) {
-        swap(arr, i, j);
-        i++;
-      }
-    }
-    swap(arr, i, endIdx);
-    return i;
+  public static int partition(int nums[], int startIdx, int endIdx) {
+   int x = nums[endIdx], i = startIdx;
+   for (int j = startIdx; j < endIdx; j++) {
+     if (nums[j] < x) {
+       swap(nums, i, j);
+       i++;
+     }
+   }
+   swap(nums, i, endIdx);
+   return i;
   }
 
-  public static void quickSort(int arr[], int startIdx, int endIdx) {
+  public static void quickSort(int nums[], int startIdx, int endIdx) {
     if (startIdx < endIdx) {
-      int pivot = partition(arr, startIdx, endIdx);
-      quickSort(arr, startIdx, pivot - 1);
-      quickSort(arr, pivot + 1, endIdx);
+      int pivot = partition(nums, startIdx, endIdx);
+      quickSort(nums, startIdx, pivot - 1);
+      quickSort(nums, pivot + 1, endIdx);
     }
   }
 
