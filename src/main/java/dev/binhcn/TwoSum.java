@@ -1,33 +1,36 @@
 package dev.binhcn;
 
+import dev.binhcn.util.Util;
+import java.util.HashMap;
+
+/**
+ Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+ You may assume that each input would have exactly one solution, and you may not use the same element twice.
+ You can return the answer in any order.
+
+ Example 1:
+ Input: nums = [2,7,11,15], target = 9
+ Output: [0,1]
+ Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+ https://leetcode.com/problems/two-sum/
+ */
 public class TwoSum {
 
-  public static int[] twoSum(int[] nums, int target) {
+  public static int[] twoSum_Hashmap(int[] nums, int target) {
+    HashMap<Integer, Integer> hashMap = new HashMap<>();
     for (int i = 0; i < nums.length; i++) {
-      for (int j = i + 1; j < nums.length; j++) {
-        if (nums[i] + nums[j] == target)
-          return new int[] {i, j};
-      }
+      int requiredNum = target - nums[i];
+      if (hashMap.containsKey(requiredNum))
+        return new int[] {hashMap.get(requiredNum), i};
+      hashMap.put(nums[i], i);
     }
-    return new int[] {};
-  }
-
-  public static int[] twoSum_TwoPointer(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    Util.quickSort(nums, left, right);
-    while (left < right) {
-      int sum = nums[left] + nums[right];
-      if (sum == target) {
-        return new int[] {left, right};
-      } else if (sum < target) left++;
-      else right--;
-    }
-    return new int[] {};
+    return null;
   }
 
   public static void main(String[] args) {
     int nums[] = { 15,11,7,2 };
     int target = 9;
-    Util.printArr(twoSum_TwoPointer(nums, target));
+    Util.print(twoSum_Hashmap(nums, target));
   }
 }

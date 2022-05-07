@@ -1,11 +1,11 @@
-package dev.binhcn;
+package dev.binhcn.util;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class Util {
 
-  public static void printArr(int[] nums) {
+  public static void print(int[] nums) {
     for (int i = 0; i < nums.length; i++) {
       System.out.print(nums[i] + " ");
     }
@@ -39,6 +39,18 @@ public class Util {
     }
   }
 
+  public static void print(LinkedList linkedList) {
+    print(linkedList.head);
+  }
+
+  public static void print(Node node) {
+    while (node != null) {
+      System.out.print(node.data + " ");
+      node = node.next;
+    }
+    System.out.println();
+  }
+
   public static void main(String[] args) {
     List<int[]> inputList = Arrays.asList(
         new int[] {1,8,6,2,5,4,8,3,7},
@@ -48,7 +60,7 @@ public class Util {
     );
     for (int[] nums : inputList) {
       quickSort(nums, 0, nums.length - 1);
-      printArr(nums);
+      print(nums);
     }
   }
 }
