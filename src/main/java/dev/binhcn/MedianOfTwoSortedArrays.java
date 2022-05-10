@@ -1,4 +1,4 @@
-package dev.binhcn.util;
+package dev.binhcn;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,8 +45,8 @@ public class MedianOfTwoSortedArrays {
   }
 
   public static void main(String[] args) {
-    List<int[]> list1 = Arrays.asList(new int[] {1,3}, new int[] {1,2});
-    List<int[]> list2 = Arrays.asList(new int[] {2}, new int[] {3,4});
+    List<int[]> list1 = Arrays.asList(new int[] {1,3}, new int[] {1,2,3,4,5}, new int[] {1,3,5,7});
+    List<int[]> list2 = Arrays.asList(new int[] {2}, new int[] {}, new int[] {4,6,8});
 
     for (int i = 0; i < list1. size(); i++) {
       System.out.println(findMedianSortedArrays(list1.get(i), list2.get(i)));
