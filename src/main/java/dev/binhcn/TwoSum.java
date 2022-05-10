@@ -2,6 +2,7 @@ package dev.binhcn;
 
 import dev.binhcn.util.Util;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -18,14 +19,14 @@ import java.util.HashMap;
 public class TwoSum {
 
   public static int[] twoSum_Hashmap(int[] nums, int target) {
-    HashMap<Integer, Integer> hashMap = new HashMap<>();
+    Map<Integer, Integer> map = new HashMap<>();
     for (int i = 0; i < nums.length; i++) {
       int requiredNum = target - nums[i];
-      if (hashMap.containsKey(requiredNum))
-        return new int[] {hashMap.get(requiredNum), i};
-      hashMap.put(nums[i], i);
+      if (map.containsKey(requiredNum))
+        return new int[] {map.get(requiredNum), i};
+      map.put(nums[i], i);
     }
-    return null;
+    return new int[0];
   }
 
   public static void main(String[] args) {
