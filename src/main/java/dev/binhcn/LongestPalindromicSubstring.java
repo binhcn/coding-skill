@@ -20,8 +20,8 @@ public class LongestPalindromicSubstring {
     int[] p = new int[length];
     int c = 0, r = 0, maxLength = 0, position = -1;
     for (int i = 0; i < length; i++) {
-      int mirror = 2 * c - i;
       if (i < r) {
+        int mirror = 2 * c - i;
         p[i] = Math.min(r - i, p[mirror]);
       }
       int a = i + (1 + p[i]);
