@@ -15,18 +15,16 @@ package dev.binhcn;
 public class LongestPalindromicSubstring {
 
   public static String longestPalindrome(String s) {
-    String updatedString = getUpdatedString(s);
-    int length = 2 * s.length() + 1;
+    String updatedStr = getUpdatedString(s);
+    int c = 0, r = 0, offset = 0, position = -1, length = updatedStr.length();
     int[] p = new int[length];
-    int c = 0, r = 0, maxLength = 0, position = -1;
     for (int i = 0; i < length; i++) {
       if (i < r) {
         int mirror = 2 * c - i;
         p[i] = Math.min(r - i, p[mirror]);
       }
-      int a = i + (1 + p[i]);
-      int b = i - (1 + p[i]);
-      while (a < length && b >= 0 && updatedString.charAt(a) == updatedString.charAt(b)) {
+      int a = i + (1 + p[i]), b = i - (1 + p[i]);
+      while (a < length && b > -1 && updatedStr.charAt(a) == updatedStr.charAt(b)) {
         p[i]++;
         a++;
         b--;
@@ -35,16 +33,15 @@ public class LongestPalindromicSubstring {
         c = i;
         r = i + p[i];
       }
-      if (maxLength < p[i]) {
-        maxLength = p[i];
+      if (offset < p[i]) {
+        offset = p[i];
         position = i;
       }
     }
-    int offset = p[position];
     StringBuilder result = new StringBuilder();
     for (int i = position - offset + 1; i <= position + offset - 1; i++) {
-      if (updatedString.charAt(i) != '#') {
-        result.append(updatedString.charAt(i));
+      if (updatedStr.charAt(i) != '#') {
+        result.append(updatedStr.charAt(i));
       }
     }
     return result.toString();
