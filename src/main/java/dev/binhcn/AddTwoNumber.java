@@ -34,16 +34,13 @@ public class AddTwoNumber {
       }
       Node node = new Node(sum % 10);
       carry = sum / 10;
-      if (temp == null) {
-        temp = head = node;
-      } else {
+      if (temp == null) head = temp = node;
+      else {
         temp.next = node;
         temp = temp.next;
       }
     }
-    if (carry > 0) {
-      temp.next = new Node(carry);
-    }
+    temp.next = carry > 0 ? new Node(carry) : null;
     return head;
   }
 
