@@ -20,19 +20,8 @@ import java.util.List;
  */
 public class ContainerWithMostWater {
 
-  //Brute Force
-  public static int maxArea(int[] height) {
-    int maxArea = 0;
-    for (int i = 0; i < height.length; i++) {
-      for (int j = i + 1; j < height.length; j++) {
-        maxArea = Math.max(maxArea, (j - i) * Math.min(height[i], height[j]));
-      }
-    }
-    return maxArea;
-  }
-
   //Two Pointer Approach
-  public static int maxArea1(int[] height) {
+  public static int maxArea(int[] height) {
     int maxArea = 0, l = 0, r = height.length - 1;
     while (l < r) {
       maxArea = Math.max(maxArea, Math.min(height[l], height[r]) * (r - l));
@@ -48,7 +37,7 @@ public class ContainerWithMostWater {
         new int[] {1,2,3,4,5}
     );
     for (int[] number : inputList) {
-      System.out.println(maxArea1(number));
+      System.out.println(maxArea(number));
     }
   }
 }
