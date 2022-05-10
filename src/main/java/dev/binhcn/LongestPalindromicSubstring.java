@@ -14,6 +14,7 @@ package dev.binhcn;
  */
 public class LongestPalindromicSubstring {
 
+  //Manacher's Algorithm
   public static String longestPalindrome(String s) {
     String updatedStr = getUpdatedString(s);
     int c = 0, r = 0, offset = 0, position = -1, length = updatedStr.length();

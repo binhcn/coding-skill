@@ -33,8 +33,11 @@ public class MedianOfTwoSortedArrays {
         return (n + m) % 2 == 0
             ? (Math.max(maxLeftNums1, maxLeftNums2) + Math.min(minRightNums1, minRightNums2)) / 2.0
             : Math.max(maxLeftNums1, maxLeftNums2);
-      } else if (maxLeftNums1 > minRightNums2) end = partition1 - 1;
-      else start = partition1 + 1;
+      } else if (maxLeftNums1 > minRightNums2) {
+        end = partition1 - 1;
+      } else {
+        start = partition1 + 1;
+      }
     }
     throw new IllegalArgumentException();
   }
