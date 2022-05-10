@@ -16,19 +16,14 @@ import java.util.Set;
 public class LongestSubstringWithoutRepeatingCharacters {
 
   public static int lengthOfLongestSubstring(String s) {
-    if (s == null || s.equals("")) {
-      return 0;
-    }
+    if (s == null || s.isEmpty()) return 0;
     int start = 0, end = 0, maxLength = 0;
-    Set<Character> hashSet = new HashSet<>();
+    Set<Character> set = new HashSet<>();
     while (end < s.length()) {
-      if (hashSet.add(s.charAt(end))) {
+      if (set.add(s.charAt(end))) {
         end++;
-        maxLength = Math.max(maxLength, hashSet.size());
-      } else {
-        hashSet.remove(s.charAt(start));
-        start++;
-      }
+        maxLength = Math.max(maxLength, set.size());
+      } else set.remove(s.charAt(start++));
     }
     return maxLength;
   }
