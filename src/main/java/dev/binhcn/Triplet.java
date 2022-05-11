@@ -15,32 +15,31 @@ import java.util.HashSet;
  */
 public class Triplet {
 
-  public static boolean find3Numbers_HashSet(int arr[], int sum) {
-    for (int i = 0; i < arr.length - 2; i++) {
+  public static boolean find3Numbers_HashSet(int nums[], int sum) {
+    for (int i = 0; i < nums.length - 2; i++) {
       HashSet<Integer> hashSet = new HashSet<>();
-      int currSum = sum - arr[i];
-      for (int j = i + 1; j < arr.length; j++) {
-        if (hashSet.contains(currSum - arr[j])) {
-          System.out.printf("Triplet is %d, %d, %d", arr[i], arr[j], currSum - arr[j]);
+      int currSum = sum - nums[i];
+      for (int j = i + 1; j < nums.length; j++) {
+        if (hashSet.contains(currSum - nums[j])) {
+          System.out.printf("Triplet is %d, %d, %d", nums[i], nums[j], currSum - nums[j]);
           return true;
         }
-        hashSet.add(arr[j]);
+        hashSet.add(nums[j]);
       }
     }
     return false;
   }
 
-  public static boolean find3Numbers_TwoPointer(int arr[], int sum) {
-    Util.quickSort(arr, 0, arr.length - 1);
-    for (int i = 0; i < arr.length - 2; i++) {
-      int l = i + 1;
-      int r = arr.length - 1;
+  public static boolean find3Numbers_TwoPointer(int nums[], int sum) {
+    Util.quickSort(nums, 0, nums.length - 1);
+    for (int i = 0; i < nums.length - 2; i++) {
+      int l = i + 1, r = nums.length - 1, target = sum - nums[i];
       while (l < r) {
-        if (arr[i] + arr[l] + arr[r] == sum) {
-          System.out.print("Triplet is " + arr[i] + ", " + arr[l] + ", " + arr[r]);
+        if (nums[l] + nums[r] == target) {
+          System.out.print("Triplet is " + nums[i] + ", " + nums[l] + ", " + nums[r]);
           return true;
         }
-        else if (arr[i] + arr[l] + arr[r] < sum) l++;
+        else if (nums[l] + nums[r] < target) l++;
         else r--;
       }
     }
@@ -48,10 +47,11 @@ public class Triplet {
   }
 
   public static void main(String[] args) {
-    int arr[] = { 1, 4, 45, 6, 10, 8 };
+    int nums[] = { 1, 4, 45, 6, 10, 8 };
     int sum = 22;
 
-//    find3Numbers_HashSet(arr, sum);
-    find3Numbers_TwoPointer(arr, sum);
+    find3Numbers_HashSet(nums, sum);
+    System.out.println();
+    find3Numbers_TwoPointer(nums, sum);
   }
 }
