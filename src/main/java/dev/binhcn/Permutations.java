@@ -20,7 +20,7 @@ public class Permutations {
   
   public static List<List<Integer>> permute_bruteForce(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
-    result.add(new ArrayList());
+    result.add(new ArrayList<>());
     for (int i = 0; i < nums.length; i++) {
       int currValue = nums[i];
       List<List<Integer>> temp = new ArrayList<>();
@@ -46,12 +46,11 @@ public class Permutations {
     if (l == r) {
       List<Integer> currList = IntStream.of(nums).boxed().collect(Collectors.toList());
       result.add(currList);
-    }
-    else {
+    } else {
       for (int i = l; i <= r; i++) {
-        nums = Util.swap(nums, l, i);
+        Util.swap(nums, l, i);
         permute(result, nums, l + 1, r);
-        nums = Util.swap(nums, l, i);
+        Util.swap(nums, l, i);
       }
     }
   }
