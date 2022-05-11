@@ -25,7 +25,7 @@ public class Permutations {
       int currValue = nums[i];
       List<List<Integer>> temp = new ArrayList<>();
       for (int j = 0; j < result.size(); j++) {
-        for (int k = 0; k <result.get(j).size() + 1; k++) {
+        for (int k = 0; k <= result.get(j).size(); k++) {
           List<Integer> currList = new ArrayList<>(result.get(j));
           currList.add(k, currValue);
           temp.add(currList);
@@ -45,9 +45,6 @@ public class Permutations {
   public static void permute_recursive(List<List<Integer>> result, int[] nums, int l, int r) {
     if (l == r) {
       List<Integer> currList = IntStream.of(nums).boxed().collect(Collectors.toList());
-//      List<Integer> currList = Arrays.stream(nums).boxed().collect(Collectors.toList());
-//      Integer[] currList = IntStream.of(nums).boxed().toArray(Integer[]::new);
-//      Integer[] currList = Arrays.stream(nums).boxed().toArray(Integer[]::new);
       result.add(currList);
     }
     else {
