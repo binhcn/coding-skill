@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
  */
 public class Permutations {
   
-  public static List<List<Integer>> permute(int[] nums) {
+  public static List<List<Integer>> permute_bruteForce(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
     result.add(new ArrayList());
     for (int i = 0; i < nums.length; i++) {
@@ -36,13 +36,13 @@ public class Permutations {
     return result;
   }
 
-  public static List<List<Integer>> permute_recursive(int[] nums) {
+  public static List<List<Integer>> permute(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
-    permute_recursive(result, nums, 0, nums.length - 1);
+    permute(result, nums, 0, nums.length - 1);
     return result;
   }
 
-  public static void permute_recursive(List<List<Integer>> result, int[] nums, int l, int r) {
+  public static void permute(List<List<Integer>> result, int[] nums, int l, int r) {
     if (l == r) {
       List<Integer> currList = IntStream.of(nums).boxed().collect(Collectors.toList());
       result.add(currList);
@@ -50,7 +50,7 @@ public class Permutations {
     else {
       for (int i = l; i <= r; i++) {
         nums = Util.swap(nums, l, i);
-        permute_recursive(result, nums, l + 1, r);
+        permute(result, nums, l + 1, r);
         nums = Util.swap(nums, l, i);
       }
     }
