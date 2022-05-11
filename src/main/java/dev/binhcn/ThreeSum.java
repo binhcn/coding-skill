@@ -1,7 +1,6 @@
 package dev.binhcn;
 
 import dev.binhcn.util.Util;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,48 +17,22 @@ import java.util.List;
  */
 public class ThreeSum {
 
-  public static List<List> threeSum(int[] nums) {
-    Arrays.sort(nums);
-    List<List> res=new ArrayList<>();
-
-    for(int i=0;i<nums.length-2;i++) {
-      int lo=i+1, hi = nums.length - 1, sum = 0 - nums[i];
-
-      if(i==0 || (i>0 && nums[i]!=nums[i-1])) {
-        while(lo<hi) {
-          if(nums[lo]+nums[hi]==sum) {
-            res.add(Arrays.asList(nums[lo],nums[i],nums[hi]));
-            while(lo<hi && nums[lo]==nums[lo+1]) lo++;
-            while(hi>lo && nums[hi]==nums[hi-1]) hi--;
-            lo++;
-            hi--;
-          }
-          else if(nums[lo]+nums[hi]<sum)
-            lo++;
-          else
-            hi--;
-        }
-      }
-    }
-    return res;
-  }
-
-  public static List<List<Integer>> find3Numbers_TwoPointer(int arr[], int sum) {
-    Util.quickSort(arr, 0, arr.length - 1);
+  public static List<List<Integer>> threeSum(int nums[], int sum) {
+    Util.quickSort(nums, 0, nums.length - 1);
     List<List<Integer>> result = new LinkedList<>();
-    for (int i = 0; i < arr.length - 2; i++) {
-      if (arr[i] == arr[i+1]) continue;
-      int l = i + 1;
-      int r = arr.length - 1;
+
+    for (int i = 0; i < nums.length - 2; i++) {
+      if (i > 0 && nums[i-1] == nums[i]) continue;
+      int l = i + 1, r = nums.length - 1, target = sum - nums[i];
       while (l < r) {
-        if (arr[i] + arr[l] + arr[r] == sum) {
-          result.add(Arrays.asList(arr[i], arr[l], arr[r]));
-          while (l < r && arr[l] == arr[l + 1]) l++;
-          while (l < r && arr[r] == arr[r - 1]) r--;
+        if (nums[l] + nums[r] == target) {
+          result.add(Arrays.asList(nums[i], nums[l], nums[r]));
+          while (l < r && nums[l] == nums[l + 1]) l++;
+          while (l < r && nums[r] == nums[r - 1]) r--;
           l++;
           r--;
         }
-        else if (arr[i] + arr[l] + arr[r] < sum) l++;
+        else if (nums[l] + nums[r] < target) l++;
         else r--;
       }
     }
@@ -67,10 +40,8 @@ public class ThreeSum {
   }
 
   public static void main(String[] args) {
-    int arr[] = { -1,0,1,2,-1,-4 };
+    int nums[] = { -1,0,1,2,-1,-4 };
     int sum = 0;
-
-//    System.out.println(find3Numbers_TwoPointer(arr, sum));
-    System.out.println(threeSum(arr));
+    System.out.println(threeSum(nums, sum));
   }
 }
