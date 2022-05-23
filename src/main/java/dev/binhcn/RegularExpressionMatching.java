@@ -3,19 +3,19 @@ package dev.binhcn;
 public class RegularExpressionMatching {
 
   public static boolean isMatch(String s, String p) {
-    int rows = s.length(), columns = p.length();
-    if (rows == 0 && columns == 0) return true;
-    if (columns == 0) return false;
+    int rows = s.length(), cols = p.length();
+    if (rows == 0 && cols == 0) return true;
+    if (cols == 0) return false;
 
-    boolean[][] dp = new boolean[rows + 1][columns + 1];
+    boolean[][] dp = new boolean[rows + 1][cols + 1];
     dp[0][0] = true;
-    for (int i = 2; i < columns + 1; i++) {
+    for (int i = 2; i < cols + 1; i++) {
       if (p.charAt(i - 1) == '*') {
         dp[0][i] = dp[0][i - 2];
       }
     }
     for (int i = 1; i < rows + 1; i++) {
-      for (int j = 1; j < columns + 1; j++) {
+      for (int j = 1; j < cols + 1; j++) {
         if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.') {
           dp[i][j] = dp[i - 1][j - 1];
         } else if (j > 1 && p.charAt(j - 1) == '*') {
@@ -26,7 +26,7 @@ public class RegularExpressionMatching {
         }
       }
     }
-    return dp[rows][columns];
+    return dp[rows][cols];
   }
 
   public static void main(String[] args) {
