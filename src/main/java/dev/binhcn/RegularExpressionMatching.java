@@ -16,12 +16,12 @@ public class RegularExpressionMatching {
     }
     for (int i = 1; i < rows + 1; i++) {
       for (int j = 1; j < cols + 1; j++) {
-        if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.') {
+        if (p.charAt(j - 1) == '.' || p.charAt(j - 1) == s.charAt(i - 1)) {
           dp[i][j] = dp[i - 1][j - 1];
         } else if (j > 1 && p.charAt(j - 1) == '*') {
           dp[i][j] = dp[i][j - 2];
           if (p.charAt(j - 2) == '.' || p.charAt(j - 2) == s.charAt(i - 1)) {
-            dp[i][j] = dp[i][j] | dp[i - 1][j];
+            dp[i][j] |= dp[i - 1][j];
           }
         }
       }
